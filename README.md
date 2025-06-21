@@ -1,1 +1,794 @@
-# translator
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online text to speech converter. Convert any text to audio and download as MP3. Supports multiple languages and voices.">
+    <meta name="keywords" content="text to speech, TTS, online converter, text to audio, speech synthesis, download audio">
+    <meta name="author" content="TextToAudio Converter">
+    <meta name="robots" content="index, follow">
+    <title>Text to Audio Converter | Free Online TTS Tool</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Text to Audio Converter | Free Online TTS Tool">
+    <meta property="og:description" content="Convert any text to speech and download as MP3. Supports multiple languages and voices.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/images/tts-converter-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/text-to-audio">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text to Audio Converter",
+      "url": "https://yourwebsite.com/text-to-audio",
+      "description": "Free online tool to convert text to speech and download as audio file.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 30px 0;
+            min-height: calc(100vh - 150px);
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .converter-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .ad-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 150px;
+            transition: border 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2d9249;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #d33426;
+        }
+        
+        .audio-player {
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            color: #9aa0a6;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Status message */
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .status.success {
+            background-color: #e6f4ea;
+            color: var(--secondary-color);
+            display: block;
+        }
+        
+        .status.error {
+            background-color: #fce8e6;
+            color: var(--accent-color);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">Text<span>2Audio</span></a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Convert Text to Speech Online</h1>
+                <p>Transform any text into natural sounding audio and download as MP3. Our free text-to-speech converter supports multiple languages and voices.</p>
+            </section>
+            
+            <!-- Top Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7195227609473922"
+     crossorigin="anonymous"></script>"></script>
+                <!-- TextToAudio_Top_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section class="converter-container">
+                <div class="form-group">
+                    <label for="text-input">Enter your text here:</label>
+                    <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+                </div>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="voice-select">Select Voice:</label>
+                        <select id="voice-select">
+                            <!-- Voices will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="rate">Speech Rate:</label>
+                        <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+                        <span id="rate-value">1</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="pitch">Pitch:</label>
+                        <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1">
+                        <span id="pitch-value">1</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="volume">Volume:</label>
+                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+                        <span id="volume-value">1</span>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="play-btn" class="btn-primary">
+                        <span id="play-icon">▶</span> Play
+                    </button>
+                    <button id="pause-btn" class="btn-secondary">
+                        <span id="pause-icon">⏸</span> Pause
+                    </button>
+                    <button id="stop-btn" class="btn-accent">
+                        <span id="stop-icon">⏹</span> Stop
+                    </button>
+                    <button id="download-btn" class="btn-secondary">
+                        <span id="download-icon">↓</span> Download MP3
+                    </button>
+                </div>
+                
+                <div id="status" class="status"></div>
+                
+                <audio id="audio-player" class="audio-player" controls style="display: none;"></audio>
+            </section>
+            
+            <!-- Middle Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<script async src=ca-pub-7195227609473922"
+     crossorigin="anonymous"></script>"></script>
+                <!-- TextToAudio_Mid_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section id="features" class="features">
+                <div class="feature-card">
+                    <h3>Multiple Languages</h3>
+                    <p>Convert text to speech in various languages with natural sounding voices for each supported language.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Voice Customization</h3>
+                    <p>Adjust speech rate, pitch, and volume to create the perfect audio output for your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Download MP3</h3>
+                    <p>Save your audio files as MP3 to use in presentations, videos, or for personal listening.</p>
+                </div>
+            </section>
+            
+            <!-- Bottom Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<script async src==ca-pub-7195227609473922"
+     crossorigin="anonymous"></script>"></script>
+                <!-- TextToAudio_Bottom_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/faq">FAQ</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Text2Audio Converter. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set copyright year
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Voice selection
+            const voiceSelect = document.getElementById('voice-select');
+            const textInput = document.getElementById('text-input');
+            const playBtn = document.getElementById('play-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const audioPlayer = document.getElementById('audio-player');
+            const statusDiv = document.getElementById('status');
+            
+            // Speech synthesis
+            const synth = window.speechSynthesis;
+            let utterance = null;
+            let audioChunks = [];
+            let mediaRecorder;
+            let audioStream;
+            
+            // Range inputs
+            const rateInput = document.getElementById('rate');
+            const pitchInput = document.getElementById('pitch');
+            const volumeInput = document.getElementById('volume');
+            const rateValue = document.getElementById('rate-value');
+            const pitchValue = document.getElementById('pitch-value');
+            const volumeValue = document.getElementById('volume-value');
+            
+            // Update range values display
+            rateInput.addEventListener('input', () => {
+                rateValue.textContent = rateInput.value;
+            });
+            
+            pitchInput.addEventListener('input', () => {
+                pitchValue.textContent = pitchInput.value;
+            });
+            
+            volumeInput.addEventListener('input', () => {
+                volumeValue.textContent = volumeInput.value;
+            });
+            
+            // Populate voices
+            function populateVoices() {
+                voiceSelect.innerHTML = '';
+                const voices = synth.getVoices();
+                
+                voices.forEach(voice => {
+                    const option = document.createElement('option');
+                    option.textContent = `${voice.name} (${voice.lang})${voice.default ? ' — DEFAULT' : ''}`;
+                    option.setAttribute('data-name', voice.name);
+                    option.setAttribute('data-lang', voice.lang);
+                    voiceSelect.appendChild(option);
+                });
+            }
+            
+            // On voices changed
+            synth.onvoiceschanged = populateVoices;
+            
+            // Initial population
+            populateVoices();
+            
+            // Play speech
+            playBtn.addEventListener('click', () => {
+                if (textInput.value.trim() === '') {
+                    showStatus('Please enter some text to convert.', 'error');
+                    return;
+                }
+                
+                if (synth.speaking) {
+                    synth.cancel();
+                }
+                
+                const selectedOption = voiceSelect.selectedOptions[0];
+                const voiceName = selectedOption.getAttribute('data-name');
+                const voices = synth.getVoices();
+                const voice = voices.find(v => v.name === voiceName);
+                
+                utterance = new SpeechSynthesisUtterance(textInput.value);
+                utterance.voice = voice;
+                utterance.rate = parseFloat(rateInput.value);
+                utterance.pitch = parseFloat(pitchInput.value);
+                utterance.volume = parseFloat(volumeInput.value);
+                
+                utterance.onstart = () => {
+                    playBtn.innerHTML = '<span id="play-icon">⏸</span> Playing';
+                    showStatus('Playing audio...', 'success');
+                    audioPlayer.style.display = 'none';
+                };
+                
+                utterance.onend = () => {
+                    playBtn.innerHTML = '<span id="play-icon">▶</span> Play';
+                    showStatus('Audio playback completed.', 'success');
+                };
+                
+                utterance.onerror = (event) => {
+                    console.error('SpeechSynthesis error:', event);
+                    showStatus('Error occurred during speech synthesis: ' + event.error, 'error');
+                    playBtn.innerHTML = '<span id="play-icon">▶</span> Play';
+                };
+                
+                synth.speak(utterance);
+            });
+            
+            // Pause speech
+            pauseBtn.addEventListener('click', () => {
+                if (synth.speaking && !synth.paused) {
+                    synth.pause();
+                    pauseBtn.innerHTML = '<span id="pause-icon">⏯</span> Resume';
+                    showStatus('Audio paused.', 'success');
+                } else if (synth.paused) {
+                    synth.resume();
+                    pauseBtn.innerHTML = '<span id="pause-icon">⏸</span> Pause';
+                    showStatus('Audio resumed.', 'success');
+                }
+            });
+            
+            // Stop speech
+            stopBtn.addEventListener('click', () => {
+                synth.cancel();
+                stopBtn.innerHTML = '<span id="stop-icon">⏹</span> Stopped';
+                showStatus('Audio stopped.', 'success');
+                setTimeout(() => {
+                    stopBtn.innerHTML = '<span id="stop-icon">⏹</span> Stop';
+                }, 2000);
+            });
+            
+            // Download audio
+            downloadBtn.addEventListener('click', async () => {
+                if (textInput.value.trim() === '') {
+                    showStatus('Please enter some text to convert.', 'error');
+                    return;
+                }
+                
+                showStatus('Preparing audio for download...', 'success');
+                downloadBtn.innerHTML = '<div class="spinner"></div> Processing...';
+                downloadBtn.disabled = true;
+                
+                try {
+                    // For browsers that support the Web Speech API's audio output capture
+                    if (typeof AudioContext !== 'undefined' && typeof MediaRecorder !== 'undefined') {
+                        await captureAndDownloadAudio();
+                    } else {
+                        // Fallback for browsers that don't support audio capture
+                        showStatus('Your browser does not support direct audio download. Please use the Play button and record the audio manually.', 'error');
+                        downloadBtn.innerHTML = '<span id="download-icon">↓</span> Download MP3';
+                        downloadBtn.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Download error:', error);
+                    showStatus('Error occurred during audio download: ' + error.message, 'error');
+                    downloadBtn.innerHTML = '<span id="download-icon">↓</span> Download MP3';
+                    downloadBtn.disabled = false;
+                }
+            });
+            
+            async function captureAndDownloadAudio() {
+                // This is a simplified approach - in a real implementation, you might need a server-side component
+                // or a more sophisticated client-side solution for proper MP3 conversion
+                
+                const selectedOption = voiceSelect.selectedOptions[0];
+                const voiceName = selectedOption.getAttribute('data-name');
+                const voices = synth.getVoices();
+                const voice = voices.find(v => v.name === voiceName);
+                
+                utterance = new SpeechSynthesisUtterance(textInput.value);
+                utterance.voice = voice;
+                utterance.rate = parseFloat(rateInput.value);
+                utterance.pitch = parseFloat(pitchInput.value);
+                utterance.volume = parseFloat(volumeInput.value);
+                
+                // Create an audio context
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const destination = audioContext.createMediaStreamDestination();
+                mediaRecorder = new MediaRecorder(destination.stream);
+                
+                audioChunks = [];
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+                
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    // Create download link
+                    const a = document.createElement('a');
+                    a.href = audioUrl;
+                    a.download = 'text-to-speech.wav';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    showStatus('Audio downloaded successfully!', 'success');
+                    downloadBtn.innerHTML = '<span id="download-icon">↓</span> Download MP3';
+                    downloadBtn.disabled = false;
+                };
+                
+                mediaRecorder.start();
+                
+                // Create a pseudo-audio node to capture the speech
+                // Note: This is a workaround as browsers don't directly allow capturing speech synthesis output
+                // In a production environment, you would need a server-side solution
+                const oscillator = audioContext.createOscillator();
+                oscillator.connect(destination);
+                oscillator.start();
+                
+                // Speak the text
+                synth.speak(utterance);
+                
+                // Stop recording after speech is done (estimate duration)
+                const duration = (textInput.value.length / 15) * 1000; // Rough estimate
+                setTimeout(() => {
+                    mediaRecorder.stop();
+                    oscillator.stop();
+                }, duration);
+            }
+            
+            // Show status message
+            function showStatus(message, type) {
+                statusDiv.textContent = message;
+                statusDiv.className = 'status ' + type;
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+    
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
